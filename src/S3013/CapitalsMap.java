@@ -11,21 +11,25 @@ public class CapitalsMap {
     public static void main(String[] args) {
 
         String archiveName = "countries.txt";
-        String delimitator = " ";
+        String delimitator = "\\s+";
 
         Map<String, String> countriesAndCapitals = new HashMap<>();
 
-        try (BufferedReader bufferReader = new BufferedReader(new FileReader(archiveName))) {
+        try (BufferedReader countriesReader = new BufferedReader(new FileReader(archiveName))) {
             String line;
-            while ((line = bufferReader.readLine()) != null) {
-                if (!line.trim().isEmpty() && line.contains(delimitator)) {
+            String key = null;
+            String value = null;
+            while ((line = countriesReader.readLine()) != null) {
+                if (!line.trim().isEmpty()) {
                     String[] parts = line.split(delimitator, 2);
                     if (parts.length == 2) {
-                        String key = parts[0].trim();
-                        String value = parts[1].trim();
+                        key = parts[0].trim();
+                        value = parts[1].trim();
                     }
                 }
+                countriesAndCapitals.put(key, value);
             }
+
 
         } catch (IOException e) {
             throw new RuntimeException(e);
