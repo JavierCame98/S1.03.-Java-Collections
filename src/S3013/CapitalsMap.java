@@ -1,9 +1,6 @@
 package S3013;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
 
 public class CapitalsMap {
@@ -26,7 +23,7 @@ public class CapitalsMap {
                         value = parts[1].trim();
                         System.out.println("Country: " + key + ", Captial: " + value);
                         countriesAndCapitals.put(key, value);
-                    }else{
+                    } else {
                         System.out.println("Map attributes has to be 2 (Country & Capital");
                     }
                 }
@@ -47,8 +44,8 @@ public class CapitalsMap {
         String username = sc.nextLine();
 
         int score = 0;
-        for(int i = 0; i < 10; i++){
-            String pickedCountry = pickRandomCountry(countriesAndCapitals,rnd);
+        for (int i = 0; i < 10; i++) {
+            String pickedCountry = pickRandomCountry(countriesAndCapitals, rnd);
             String correctCapital = countriesAndCapitals.get(pickedCountry);
             System.out.println("What's the capital of " + pickedCountry + "?");
             String userAnswer = sc.nextLine();
@@ -56,20 +53,33 @@ public class CapitalsMap {
                 score++;
             }
         }
-        System.out.println(score);
+        System.out.println("Your final score is: " + score);
+        saveScore(username, score);
 
 
     }
 
-    public static String pickRandomCountry (Map<String, String> countriesAndCapitals, Random rnd){
+    public static String pickRandomCountry(Map<String, String> countriesAndCapitals, Random rnd) {
         String pickedCountry = "";
-        if(countriesAndCapitals.isEmpty()){
+        if (countriesAndCapitals.isEmpty()) {
             System.out.println("There must be a country in your list");
-        }else{
+        } else {
             List<String> countryList = new ArrayList<>(countriesAndCapitals.keySet());
             int randomIndex = rnd.nextInt(countriesAndCapitals.size());
             pickedCountry = countryList.get(randomIndex);
         }
         return pickedCountry;
+    }
+
+    public static void saveScore(String username, int score) {
+        try(
+                FileWriter fw = new FileWriter("classification.txt", true);
+                BufferedWriter bw = new BufferedWriter(fw))
+        {
+            bw.write(username + " " + score);
+            bw.newLine();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
