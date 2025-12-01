@@ -42,19 +42,33 @@ public class CapitalsMap {
         Random rnd = new Random();
         System.out.println(pickRandomCountry(countriesAndCapitals, rnd));
 
+        Scanner sc = new Scanner(System.in);
+        System.out.println("What's your user name?");
+        String username = sc.nextLine();
+
+        int score = 0;
+        for(int i = 0; i < 10; i++){
+            String pickedCountry = pickRandomCountry(countriesAndCapitals,rnd);
+            String correctCapital = countriesAndCapitals.get(pickedCountry);
+            System.out.println("What's the capital of " + pickedCountry + "?");
+            String userAnswer = sc.nextLine();
+            if (correctCapital.equalsIgnoreCase(userAnswer)) {
+                score++;
+            }
+        }
+        System.out.println(score);
+
 
     }
 
-    public static String pickRandomCountry (Map<String, String> countriesAndCapitals, Random rnd) {
+    public static String pickRandomCountry (Map<String, String> countriesAndCapitals, Random rnd){
         String pickedCountry = "";
-        if (countriesAndCapitals.isEmpty()) {
-            System.out.println("To pick a country there must be countries on the list");
-        } else {
+        if(countriesAndCapitals.isEmpty()){
+            System.out.println("There must be a country in your list");
+        }else{
             List<String> countryList = new ArrayList<>(countriesAndCapitals.keySet());
             int randomIndex = rnd.nextInt(countriesAndCapitals.size());
             pickedCountry = countryList.get(randomIndex);
-
-
         }
         return pickedCountry;
     }
