@@ -35,6 +35,8 @@ public class Main {
         monthsList.add(month11);
         monthsList.add(month12);
 
+        System.out.println("##Adding August in it's position");
+
         Month month8 = new Month("August");
         monthsList.add(7,month8);
 
@@ -42,18 +44,23 @@ public class Main {
             System.out.println(month.getName());
         }
 
+        System.out.println("##Converting the Array List to HasSet List");
 
         Set<Month> arrayListToHashSet = new HashSet<>(monthsList);
-        arrayListToHashSet.add(month7);
-        arrayListToHashSet.add(month8);
+        boolean duplicatedmonth = arrayListToHashSet.add(month7);
 
-        System.out.println("HashSet list without duplicated" + arrayListToHashSet);
+
+        System.out.println("##HashSet list without duplicated" + arrayListToHashSet);
+        System.out.println("##The Hash set doesn't add duplicatedmonth" + duplicatedmonth);
+
+        System.out.println("##Scrolling through the list with for loop");
 
         for(int i = 0; i < monthsList.size(); i++){
             Month month = monthsList.get(i);
             System.out.println(month.getName());
         }
 
+        System.out.println("##Scrolling through the list with an iterator");
 
         Iterator<Month> iterator = monthsList.iterator();
 
