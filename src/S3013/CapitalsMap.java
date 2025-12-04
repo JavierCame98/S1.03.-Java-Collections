@@ -21,7 +21,7 @@ public class CapitalsMap {
                     if (parts.length == 2) {
                         key = parts[0].trim();
                         value = parts[1].trim();
-                        System.out.println("Country: " + key + ", Captial: " + value);
+                        System.out.println("Country: " + key + ", Capital: " + value);
                         countriesAndCapitals.put(key, value);
                     } else {
                         System.out.println("Map attributes has to be 2 (Country & Capital");
@@ -59,7 +59,7 @@ public class CapitalsMap {
 
     }
 
-    public static String pickRandomCountry(Map<String, String> countriesAndCapitals, Random rnd) {
+    private static String pickRandomCountry(Map<String, String> countriesAndCapitals, Random rnd) {
         String pickedCountry = "";
         if (countriesAndCapitals.isEmpty()) {
             System.out.println("There must be a country in your list");
@@ -71,7 +71,7 @@ public class CapitalsMap {
         return pickedCountry;
     }
 
-    public static void saveScore(String username, int score) {
+    private static void saveScore(String username, int score) {
         try(
                 FileWriter fw = new FileWriter("classification.txt", true);
                 BufferedWriter bw = new BufferedWriter(fw))
