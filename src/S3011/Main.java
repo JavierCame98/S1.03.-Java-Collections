@@ -1,39 +1,23 @@
 package S3011;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
 
-        ArrayList<Month> monthsList = new ArrayList<>();
-
-        Month month1 = new Month("January");
-        Month month2 = new Month("February");
-        Month month3 = new Month("March");
-        Month month4 = new Month("April");
-        Month month5 = new Month("May");
-        Month month6 = new Month("June");
-        Month month7 = new Month("July");
-        Month month9 = new Month("September");
-        Month month10 = new Month("October");
-        Month month11 = new Month("November");
-        Month month12 = new Month("December");
-
-
-        monthsList.add(month1);
-        monthsList.add(month2);
-        monthsList.add(month3);
-        monthsList.add(month4);
-        monthsList.add(month5);
-        monthsList.add(month6);
-        monthsList.add(month7);
-        monthsList.add(month9);
-        monthsList.add(month10);
-        monthsList.add(month11);
-        monthsList.add(month12);
+        ArrayList<Month> monthsList = new ArrayList<>(List.of( // mirar GitHUb crear array list inicializadno valor EstherBlackSmith
+                new Month("January"),
+                new Month("February"),
+                new Month("March"),
+                new Month("April"),
+                new Month("May"),
+                new Month("June"),
+                new Month("July"),
+                new Month("September"),
+                new Month("October"),
+                new Month("November"),
+                new Month("December")
+        ));
 
         System.out.println("##Adding August in it's position");
 
@@ -47,11 +31,12 @@ public class Main {
         System.out.println("##Converting the Array List to HasSet List");
 
         Set<Month> arrayListToHashSet = new HashSet<>(monthsList);
-        boolean duplicatedmonth = arrayListToHashSet.add(month7);
+        Month month7 = monthsList.get(6);
+        boolean duplicatedMonth = arrayListToHashSet.add(month7);
 
 
         System.out.println("##HashSet list without duplicated" + arrayListToHashSet);
-        System.out.println("##The Hash set doesn't add duplicatedmonth" + duplicatedmonth);
+        System.out.println("##The Hash set doesn't add duplicatedmonth " + duplicatedMonth);
 
         System.out.println("##Scrolling through the list with for loop");
 
@@ -64,20 +49,7 @@ public class Main {
 
         Iterator<Month> iterator = monthsList.iterator();
 
-        while(iterator.hasNext()){
-            Month month = iterator.next();
-            System.out.println(month);
-        }
-
-
-
-
-
-
-
-
-
-
+        iterator.forEachRemaining(month -> System.out.println(month.getName()));
 
     }
 }
