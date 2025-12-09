@@ -5,7 +5,7 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
 
-        ArrayList<Month> monthsList = new ArrayList<>(List.of( // mirar GitHUb crear array list inicializadno valor EstherBlackSmith
+        ArrayList<Month> monthsList = new ArrayList<>(List.of(
                 new Month("January"),
                 new Month("February"),
                 new Month("March"),
@@ -31,10 +31,10 @@ public class Main {
         System.out.println("##Converting the Array List to HasSet List");
 
         Set<Month> arrayListToHashSet = new HashSet<>(monthsList);
+
+
         Month month7 = monthsList.get(6);
         boolean duplicatedMonth = arrayListToHashSet.add(month7);
-
-
         System.out.println("##HashSet list without duplicated" + arrayListToHashSet);
         System.out.println("##The Hash set doesn't add duplicatedmonth " + duplicatedMonth);
 

@@ -1,7 +1,6 @@
 package S0312;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
@@ -20,13 +19,6 @@ public class MainInteger {
         }
 
         System.out.println("The second List reverse order is: " + integerList2);
-
-
-
-
-
-
-
 
     }
 }
