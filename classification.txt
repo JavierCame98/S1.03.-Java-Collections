@@ -3,3 +3,4 @@ Javier 0
 Paula 5
 Javi 0
  Marina 3
+Javi 2
